@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-  let frameWidth: CGFloat = 500
+  @EnvironmentObject var store: Store
 
   var body: some View {
     VStack {
@@ -24,10 +24,7 @@ struct OnboardingView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: 200)
           Button {
-            guard let fullDiskAccessURL = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") else {
-              return
-            }
-            NSWorkspace.shared.open(fullDiskAccessURL)
+            store.send(action: .openFullDiskAccessSetting)
           } label: {
             Text("Grant Access")
           }
@@ -40,10 +37,7 @@ struct OnboardingView: View {
             .frame(maxWidth: 200)
             .multilineTextAlignment(.center)
           Button {
-            guard let fullDiskAccessURL = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") else {
-              return
-            }
-            NSWorkspace.shared.open(fullDiskAccessURL)
+            store.send(action: .pushNotificationsRequestAccess)
           } label: {
             Text("Enable Notifications")
           }
@@ -61,7 +55,7 @@ struct OnboardingView: View {
         .opacity(0.8)
     }
     .padding(.all)
-    .frame(minWidth: frameWidth, minHeight: 300)
+    .frame(minWidth: 500, minHeight: 300)
   }
 }
 
