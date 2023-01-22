@@ -36,6 +36,7 @@ final class NotificationClient {
   func sendNotification(for securityCode: SecurityCode) {
     Task {
       guard (await notificationAuthorizationStatus().permissionIsGranted) else {
+        await MainActor.run { store.send(action: .initialize) }
         return
       }
       let content = UNMutableNotificationContent()

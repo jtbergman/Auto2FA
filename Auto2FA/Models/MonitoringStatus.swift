@@ -9,13 +9,17 @@ import Foundation
 
 enum MonitoringStatus {
   case active
-  case needPermissions
   case paused
+  case needPermissions(messages: Bool, notifications: Bool)
 
   func toggle() -> MonitoringStatus {
-    if self == .needPermissions {
+    switch self {
+    case .active:
+      return .paused
+    case .paused:
+      return .active
+    case .needPermissions:
       return self
     }
-    return self == .active ? .paused : .active
   }
 }

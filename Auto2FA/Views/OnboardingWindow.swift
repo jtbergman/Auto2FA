@@ -23,6 +23,7 @@ final class OnboardingWindow: NSWindow {
       defer: flag
     )
     makeKeyAndOrderFront(nil)
+    isReleasedWhenClosed = false // fixes a double free crash
     contentView = NSHostingView(rootView: OnboardingView().environmentObject(store))
   }
 }

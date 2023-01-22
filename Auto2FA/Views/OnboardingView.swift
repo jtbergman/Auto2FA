@@ -9,6 +9,33 @@ import SwiftUI
 
 struct OnboardingView: View {
   @EnvironmentObject var store: Store
+  let permitted = "checkmark.circle.fill"
+
+  var fullDiskAccessAuthorized: Bool {
+    switch store.state.monitoringStatus {
+    case .needPermissions(messages: let value, notifications: _):
+      return value
+    default:
+      return true
+    }
+  }
+
+  var pushNotificationsAuthorized: Bool {
+    switch store.state.monitoringStatus {
+    case .needPermissions(messages: _, notifications: let value):
+      return value
+    default:
+      return true
+    }
+  }
+
+  var messageIcon: String {
+    fullDiskAccessAuthorized ? permitted : "message"
+  }
+
+  var notificationIcon: String {
+    pushNotificationsAuthorized ? permitted : "bell.badge"
+  }
 
   var body: some View {
     VStack {
@@ -17,30 +44,32 @@ struct OnboardingView: View {
         .fontWeight(.heavy)
       HStack {
         VStack(spacing: 8) {
-          Image(systemName: "message")
+          Image(systemName: messageIcon)
             .imageScale(.large)
-            .foregroundColor(.accentColor)
+            .foregroundColor(fullDiskAccessAuthorized ? .green :.accentColor)
           Text("Auto2FA needs access to iMessages. Messages never leave your device.")
             .multilineTextAlignment(.center)
             .frame(maxWidth: 200)
           Button {
             store.send(action: .openFullDiskAccessSetting)
           } label: {
-            Text("Grant Access")
+            Text(fullDiskAccessAuthorized ? "Completed" : "Grant Access")
           }
+          .disabled(fullDiskAccessAuthorized)
         }.frame(maxWidth: .infinity)
         VStack(spacing: 8) {
-          Image(systemName: "bell.badge")
+          Image(systemName: notificationIcon)
             .imageScale(.large)
-            .foregroundColor(.accentColor)
+            .foregroundColor(pushNotificationsAuthorized ? .green :.accentColor)
           Text("Allow Auto2FA to send push notifications when 2FA codes are available.")
             .frame(maxWidth: 200)
             .multilineTextAlignment(.center)
           Button {
             store.send(action: .pushNotificationsRequestAccess)
           } label: {
-            Text("Enable Notifications")
+            Text(pushNotificationsAuthorized ? "Completed" : "Enable Notifications")
           }
+          .disabled(pushNotificationsAuthorized)
         }.frame(maxWidth: .infinity)
       }
       .padding()

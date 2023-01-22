@@ -8,7 +8,7 @@
 import Foundation
 
 /// How many minutes ago should messages be observed from
-let minutesAgo = -60
+let minutesAgo = -3
 
 /// How frequently should the app poll for new security codes (in nanoseconds)
 let securityCodePollFrequency: UInt64 = 3_000_000_000
@@ -16,7 +16,7 @@ let securityCodePollFrequency: UInt64 = 3_000_000_000
 /// How frequently should the app poll permissions while waiting for access (in nanoseconds)
 let permissionsGrantedPollFrequency: UInt64 = 3_000_000_000
 
-/// How long should a "Copied to Clipboard" notification show before automatic dismissal
+/// How long should a "Copied to Clipboard" notification show before automatic dismissal (in nanoseconds)
 let localNotificationShowDuration: UInt64 = 5_000_000_000
 
 /// The `UserDefault` associated with the last shown 2FA code. Used to prevent sending multiple notifications.

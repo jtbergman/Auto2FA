@@ -19,9 +19,8 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
     return state
 
   case .initialize:
-    environment.notifications.removeAllDeliveredNotifications()
     var state = state
-    state.monitoringTask = environment.permissions.monitorForPermissions()
+    state.permissionsMonitoringTask = environment.permissions.monitorForPermissions()
     return state
 
   case .openFullDiskAccessSetting:
@@ -54,13 +53,14 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
     switch status {
     case .active:
       state.onboardingWindow = nil
-      state.monitoringTask = environment.messages.monitorForMessages()
+      state.messageMonitoringTask = environment.messages.monitorForMessages()
+      state.permissionsMonitoringTask = nil
     case .needPermissions:
+      guard state.onboardingWindow == nil else { break }
       state.onboardingWindow = environment.application.showOnboardingWindow()
-      state.monitoringTask = environment.permissions.monitorForPermissions()
     case .paused:
       state.onboardingWindow = nil
-      state.monitoringTask = nil
+      state.messageMonitoringTask = nil
     }
     state.monitoringStatus = status
     return state
