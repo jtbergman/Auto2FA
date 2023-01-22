@@ -42,15 +42,15 @@ The following SQL statement will fetch all SMS messages since the reference date
 
 ```sql
 SELECT guid, text, is_from_me, date, service FROM message
-	WHERE
-		text IS NOT NULL
-	AND
-		is_from_me=false
-	AND
-		date >= datetime(referenceDate)
-	AND
-		service="SMS"
-	ORDER BY date DESC;
+  WHERE
+    text IS NOT NULL
+  AND
+    is_from_me=false
+  AND
+    date >= datetime(referenceDate)
+  AND
+    service="SMS"
+  ORDER BY date DESC;
 ```
 
 To create and execute this SQL statement in Swift
@@ -134,23 +134,23 @@ Finally, the code should poll for messages on some fixed interval. This code use
 
 ```swift
 func monitorForMessages() -> Task<Void, Never> {
-    Task {
-      while !Task.isCancelled {
-        pollMessageDB()
-          .extractSecurityCodes(messages)
-          .first ?> { mostRecentlyReceivedCode in
-            Task {
-              await MainActor.run {
-                store.send(action: .showCode(mostRecentlyReceivedCode))
-              }
+  Task {
+    while !Task.isCancelled {
+      pollMessageDB()
+        .extractSecurityCodes(messages)
+        .first ?> { mostRecentlyReceivedCode in
+          Task {
+            await MainActor.run {
+              store.send(action: .showCode(mostRecentlyReceivedCode))
             }
           }
+        }
 
-        // Task.sleep does not block a thread so is safe to use (unlike Thread.sleep)
-        try? await Task.sleep(nanoseconds: 5_000_000_000)
-      }
+      // Task.sleep does not block a thread so is safe to use (unlike Thread.sleep)
+      try? await Task.sleep(nanoseconds: 5_000_000_000)
     }
   }
+}
 ```
 
 Once we receive a message, the security code can be extracted with a simple regex
@@ -194,3 +194,16 @@ messages.lastShownCodeDate = mostRecentlyReceivedCode.date
 application.copyToClipboard(mostRecentlyReceivedCode)
 notifications.sendNotification(for: mostRecentlyReceivedCode)
 ```
+
+## Resources
+
+The following blogs were helpful for completing this project
+
+- [Getting a Redux Vibe Into SwiftUI](https://www.kodeco.com/22096649-getting-a-redux-vibe-into-swiftui#toc-anchor-017)
+- [Building a lightweight SQLite wrapper in Swift](https://shareup.app/blog/building-a-lightweight-sqlite-wrapper-in-swift/)
+- [Beyond the Sanbox: Singing and distributing macOS apps outside the App Store](https://www.appcoda.com/distribute-macos-apps/)
+
+The following projects are similar to this project
+
+- [SoFriengly/2FHey](https://github.com/SoFriendly/2fhey)
+- [Using SQL to Look Through All of Your iMessage Text Messages](https://spin.atomicobject.com/2020/05/22/search-imessage-sql/)
