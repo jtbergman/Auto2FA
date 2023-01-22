@@ -12,7 +12,7 @@ enum MonitoringStatus {
   case needPermissions
   case paused
 
-  func toggled() -> MonitoringStatus {
+  func toggle() -> MonitoringStatus {
     if self == .needPermissions {
       return self
     }

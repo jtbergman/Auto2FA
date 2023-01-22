@@ -17,7 +17,7 @@ var sent = Set<String>()
 let store = Store(
   state: State(),
   reducer: reducer(state:action:environment:),
-  environment: Environment()
+  environment: Environment.live
 )
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
