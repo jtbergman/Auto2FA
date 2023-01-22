@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E4F4C97297D08A800F7A660 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F4C96297D08A800F7A660 /* Array+Extensions.swift */; };
 		7E69EF97297CA0FA00E7BCB8 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EF96297CA0FA00E7BCB8 /* MenuBarView.swift */; };
 		7E69EF9A297CA36B00E7BCB8 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EF99297CA36B00E7BCB8 /* Store.swift */; };
 		7E69EF9E297CAC0B00E7BCB8 /* OnboardingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EF9D297CAC0B00E7BCB8 /* OnboardingWindow.swift */; };
@@ -23,6 +24,7 @@
 		7E69EFBC297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */; };
 		7E69EFBE297CEB2000E7BCB8 /* MessageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFBD297CEB2000E7BCB8 /* MessageClient.swift */; };
 		7E69EFC0297CEBC300E7BCB8 /* PermissionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFBF297CEBC300E7BCB8 /* PermissionClient.swift */; };
+		7E69EFC2297CF62D00E7BCB8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFC1297CF62D00E7BCB8 /* Constants.swift */; };
 		7EA9DA71297B6E8F00B37A41 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA70297B6E8F00B37A41 /* App.swift */; };
 		7EA9DA73297B6E8F00B37A41 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */; };
 		7EA9DA75297B6E9000B37A41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA9DA74297B6E9000B37A41 /* Assets.xcassets */; };
@@ -31,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E4F4C96297D08A800F7A660 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		7E69EF96297CA0FA00E7BCB8 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		7E69EF99297CA36B00E7BCB8 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		7E69EF9D297CAC0B00E7BCB8 /* OnboardingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindow.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNAuthorizationStatus+Extensions.swift"; sourceTree = "<group>"; };
 		7E69EFBD297CEB2000E7BCB8 /* MessageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageClient.swift; sourceTree = "<group>"; };
 		7E69EFBF297CEBC300E7BCB8 /* PermissionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionClient.swift; sourceTree = "<group>"; };
+		7E69EFC1297CF62D00E7BCB8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7EA9DA6D297B6E8F00B37A41 /* Auto2FA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auto2FA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA9DA70297B6E8F00B37A41 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		7E69EFBA297CE42E00E7BCB8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7E4F4C96297D08A800F7A660 /* Array+Extensions.swift */,
 				7E69EFB8297CE42200E7BCB8 /* Optional+Extensions.swift */,
 				7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */,
 			);
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA9DA70297B6E8F00B37A41 /* App.swift */,
+				7E69EFC1297CF62D00E7BCB8 /* Constants.swift */,
 				7EA9DA81297BA06000B37A41 /* Delegate.swift */,
 			);
 			path = App;
@@ -250,11 +256,13 @@
 				7EA9DA82297BA06000B37A41 /* Delegate.swift in Sources */,
 				7E69EFB0297CDDC800E7BCB8 /* NotificationClient.swift in Sources */,
 				7E69EFA7297CDA0A00E7BCB8 /* State.swift in Sources */,
+				7E4F4C97297D08A800F7A660 /* Array+Extensions.swift in Sources */,
 				7E69EF97297CA0FA00E7BCB8 /* MenuBarView.swift in Sources */,
 				7E69EFBC297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift in Sources */,
 				7EA9DA73297B6E8F00B37A41 /* OnboardingView.swift in Sources */,
 				7E69EFBE297CEB2000E7BCB8 /* MessageClient.swift in Sources */,
 				7E69EFAB297CDB7800E7BCB8 /* MonitoringStatus.swift in Sources */,
+				7E69EFC2297CF62D00E7BCB8 /* Constants.swift in Sources */,
 				7E69EFA5297CD9F800E7BCB8 /* Actions.swift in Sources */,
 				7E69EFA0297CD40000E7BCB8 /* Message.swift in Sources */,
 				7EA9DA71297B6E8F00B37A41 /* App.swift in Sources */,

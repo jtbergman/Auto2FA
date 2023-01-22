@@ -41,6 +41,7 @@ final class NotificationClient {
       let content = UNMutableNotificationContent()
       content.title = "Copied to Clipboard"
       content.body = "From messages"
+      content.interruptionLevel = .timeSensitive
 
       let request = UNNotificationRequest(
         identifier: UUID().uuidString,
@@ -49,7 +50,7 @@ final class NotificationClient {
       )
 
       try? await notifications.add(request)
-      try? await Task.sleep(nanoseconds: 5_000_000_000)
+      try? await Task.sleep(nanoseconds: localNotificationShowDuration)
       removeDeliveredNotifications(withIdentifiers: [request.identifier])
     }
   }

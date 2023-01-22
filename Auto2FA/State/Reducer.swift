@@ -15,6 +15,7 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
   switch action {
   case .cleanup:
     environment.notifications.removeAllDeliveredNotifications()
+    environment.messages.close()
     return state
 
   case .initialize:
@@ -24,7 +25,7 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
     return state
 
   case .openFullDiskAccessSetting:
-    environment.application.open(URL(string: state.fullDiskAccessSettingURL))
+    environment.application.open(URL(string: fullDiskAccessSettingURL))
     return state
 
   case .pushNotificationsRequestAccess:
@@ -32,7 +33,13 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
     return state
 
   case .reportIssue:
-    environment.application.open(URL(string: state.reportIssueURL))
+    environment.application.open(URL(string: reportIssueURL))
+    return state
+
+  case .showCode(let code):
+    environment.messages.lastShownCodeDate = code.date
+    environment.application.copyToClipboard(code)
+    environment.notifications.sendNotification(for: code)
     return state
 
   case .selectMenuStatusItem:
@@ -62,24 +69,4 @@ func reducer(state: State, action: Action, environment: Environment) -> State {
     environment.application.terminate()
     return state
   }
-}
-
-
-// MARK: Helpers
-
-func extractSecurityCodes(_ messages: [Message]) -> [SecurityCode] {
-  let regex = Regex {
-    Capture {
-      OneOrMore(.digit)
-    }
-  }
-  var codes = [SecurityCode]()
-  for message in messages {
-    message.text.firstMatch(of: regex) ?> { match in
-      let code = String(match.output.0)
-      codes.append(SecurityCode(id: message.id, code: code))
-    }
-  }
-  print(codes)
-  return codes
 }

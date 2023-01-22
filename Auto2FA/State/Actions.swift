@@ -13,6 +13,7 @@ enum Action {
   case openFullDiskAccessSetting
   case pushNotificationsRequestAccess
   case reportIssue
+  case showCode(SecurityCode)
   case selectMenuStatusItem
   case setMonitoringStatus(MonitoringStatus)
   case quit

@@ -31,7 +31,7 @@ final class PermissionClient {
         await MainActor.run {
           store.send(action: .setMonitoringStatus(authorized ? .active : .needPermissions))
         }
-        try? await Task.sleep(nanoseconds: 3_000_000_000)
+        try? await Task.sleep(nanoseconds: permissionsGrantedPollFrequency)
       }
     }
   }

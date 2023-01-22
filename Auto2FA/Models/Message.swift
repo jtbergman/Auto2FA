@@ -10,4 +10,5 @@ import Foundation
 struct Message {
   let id: String
   let text: String
+  let date: Int
 }

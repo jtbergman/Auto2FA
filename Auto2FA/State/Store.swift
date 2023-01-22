@@ -25,8 +25,9 @@ final class Store: ObservableObject {
   func send(action: Action) {
     state = reducer(state, action, environment)
     #if DEBUG
+      print(action)
       dump(state)
-      print("")
+      print("\n")
     #endif
   }
 }

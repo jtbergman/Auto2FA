@@ -25,10 +25,4 @@ struct State {
       oldValue?.close()
     }
   }
-
-  /// The deeplink URL for the full disk access permission in settings
-  let fullDiskAccessSettingURL = "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
-
-  /// The URL for reporting issues with reading codes
-  let reportIssueURL = "https://github.com/jtbergman/Auto2FA/issues/new?template=bug_report.md"
 }

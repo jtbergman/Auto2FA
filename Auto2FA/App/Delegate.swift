@@ -7,12 +7,6 @@
 
 import Foundation
 import AppKit
-import UserNotifications
-import SQLite3
-import RegexBuilder
-import SwiftUI
-
-var sent = Set<String>()
 
 let store = Store(
   state: State(),
