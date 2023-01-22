@@ -205,5 +205,5 @@ The following blogs were helpful for completing this project
 
 The following projects are similar to this project
 
-- [SoFriengly/2FHey](https://github.com/SoFriendly/2fhey)
+- [SoFriendly/2FHey](https://github.com/SoFriendly/2fhey)
 - [Using SQL to Look Through All of Your iMessage Text Messages](https://spin.atomicobject.com/2020/05/22/search-imessage-sql/)
