@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  App.swift
 //  Auto2FA
 //
 //  Created by JT Bergman on 1/20/23.
@@ -20,7 +20,7 @@ let store = Store(
   environment: Environment.live
 )
 
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class Delegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ notification: Notification) {
     store.send(action: .initialize)
   }
