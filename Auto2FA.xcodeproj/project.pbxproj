@@ -28,7 +28,6 @@
 		7EA9DA71297B6E8F00B37A41 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA70297B6E8F00B37A41 /* App.swift */; };
 		7EA9DA73297B6E8F00B37A41 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */; };
 		7EA9DA75297B6E9000B37A41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA9DA74297B6E9000B37A41 /* Assets.xcassets */; };
-		7EA9DA78297B6E9000B37A41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA9DA77297B6E9000B37A41 /* Preview Assets.xcassets */; };
 		7EA9DA82297BA06000B37A41 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA81297BA06000B37A41 /* Delegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,6 @@
 		7EA9DA70297B6E8F00B37A41 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7EA9DA74297B6E9000B37A41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7EA9DA77297B6E9000B37A41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7EA9DA79297B6E9000B37A41 /* Auto2FA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auto2FA.entitlements; sourceTree = "<group>"; };
 		7EA9DA7F297B6FA000B37A41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7EA9DA81297BA06000B37A41 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
@@ -143,17 +141,8 @@
 				7EA9DA83297BA4DD00B37A41 /* Views */,
 				7EA9DA74297B6E9000B37A41 /* Assets.xcassets */,
 				7EA9DA79297B6E9000B37A41 /* Auto2FA.entitlements */,
-				7EA9DA76297B6E9000B37A41 /* Preview Content */,
 			);
 			path = Auto2FA;
-			sourceTree = "<group>";
-		};
-		7EA9DA76297B6E9000B37A41 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				7EA9DA77297B6E9000B37A41 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		7EA9DA80297BA05300B37A41 /* App */ = {
@@ -234,7 +223,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EA9DA78297B6E9000B37A41 /* Preview Assets.xcassets in Resources */,
 				7EA9DA75297B6E9000B37A41 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +385,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"Auto2FA/Preview Content\"";
 				DEVELOPMENT_TEAM = 4KLSEU7ZTX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -428,7 +415,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Auto2FA/Preview Content\"";
 				DEVELOPMENT_TEAM = 4KLSEU7ZTX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
