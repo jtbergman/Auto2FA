@@ -8,6 +8,7 @@
 import Foundation
 
 enum Action {
+  case cleanup
   case initialize
   case openFullDiskAccessSetting
   case pushNotificationsRequestAccess

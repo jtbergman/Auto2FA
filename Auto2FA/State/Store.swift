@@ -5,23 +5,28 @@
 //  Created by JT Bergman on 1/21/23.
 //
 
-import AppKit
 import Foundation
-import RegexBuilder
-import SQLite3
-import UserNotifications
 
 final class Store: ObservableObject {
   @Published private(set) var state: State
   private let reducer: Reducer
+  private let environment: Environment
 
-  init(state: State, reducer: @escaping Reducer = reducer(state:action:)) {
+  init(
+    state: State,
+    reducer: @escaping Reducer,
+    environment: Environment
+  ) {
     self.state = state
     self.reducer = reducer
+    self.environment = environment
   }
 
   func send(action: Action) {
-    state = reducer(state, action)
-    print("Update: \(state)")
+    state = reducer(state, action, environment)
+    #if DEBUG
+      dump(state)
+      print("")
+    #endif
   }
 }

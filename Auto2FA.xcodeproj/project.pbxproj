@@ -16,6 +16,11 @@
 		7E69EFA7297CDA0A00E7BCB8 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFA6297CDA0A00E7BCB8 /* State.swift */; };
 		7E69EFA9297CDB2800E7BCB8 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFA8297CDB2800E7BCB8 /* Reducer.swift */; };
 		7E69EFAB297CDB7800E7BCB8 /* MonitoringStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFAA297CDB7800E7BCB8 /* MonitoringStatus.swift */; };
+		7E69EFB0297CDDC800E7BCB8 /* NotificationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFAF297CDDC800E7BCB8 /* NotificationClient.swift */; };
+		7E69EFB5297CE07600E7BCB8 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFB4297CE07600E7BCB8 /* Environment.swift */; };
+		7E69EFB7297CE14A00E7BCB8 /* ApplicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFB6297CE14A00E7BCB8 /* ApplicationClient.swift */; };
+		7E69EFB9297CE42200E7BCB8 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFB8297CE42200E7BCB8 /* Optional+Extensions.swift */; };
+		7E69EFBC297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */; };
 		7EA9DA71297B6E8F00B37A41 /* AutoSMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA70297B6E8F00B37A41 /* AutoSMS.swift */; };
 		7EA9DA73297B6E8F00B37A41 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */; };
 		7EA9DA75297B6E9000B37A41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA9DA74297B6E9000B37A41 /* Assets.xcassets */; };
@@ -33,6 +38,11 @@
 		7E69EFA6297CDA0A00E7BCB8 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		7E69EFA8297CDB2800E7BCB8 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		7E69EFAA297CDB7800E7BCB8 /* MonitoringStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringStatus.swift; sourceTree = "<group>"; };
+		7E69EFAF297CDDC800E7BCB8 /* NotificationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationClient.swift; sourceTree = "<group>"; };
+		7E69EFB4297CE07600E7BCB8 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		7E69EFB6297CE14A00E7BCB8 /* ApplicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationClient.swift; sourceTree = "<group>"; };
+		7E69EFB8297CE42200E7BCB8 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNAuthorizationStatus+Extensions.swift"; sourceTree = "<group>"; };
 		7EA9DA6D297B6E8F00B37A41 /* Auto2FA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auto2FA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA9DA70297B6E8F00B37A41 /* AutoSMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSMS.swift; sourceTree = "<group>"; };
 		7EA9DA72297B6E8F00B37A41 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -58,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				7E69EFA4297CD9F800E7BCB8 /* Actions.swift */,
+				7E69EFB4297CE07600E7BCB8 /* Environment.swift */,
 				7E69EFA8297CDB2800E7BCB8 /* Reducer.swift */,
 				7E69EFA6297CDA0A00E7BCB8 /* State.swift */,
 				7E69EF99297CA36B00E7BCB8 /* Store.swift */,
@@ -73,6 +84,24 @@
 				7E69EFA1297CD41100E7BCB8 /* SecurityCode.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7E69EFAE297CDDB800E7BCB8 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				7E69EFB6297CE14A00E7BCB8 /* ApplicationClient.swift */,
+				7E69EFAF297CDDC800E7BCB8 /* NotificationClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		7E69EFBA297CE42E00E7BCB8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E69EFB8297CE42200E7BCB8 /* Optional+Extensions.swift */,
+				7E69EFBB297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7EA9DA64297B6E8F00B37A41 = {
@@ -96,6 +125,8 @@
 			children = (
 				7EA9DA7F297B6FA000B37A41 /* Info.plist */,
 				7EA9DA80297BA05300B37A41 /* App */,
+				7E69EFAE297CDDB800E7BCB8 /* Clients */,
+				7E69EFBA297CE42E00E7BCB8 /* Extensions */,
 				7E69EFA3297CD41600E7BCB8 /* Models */,
 				7E69EF98297CA32900E7BCB8 /* State */,
 				7EA9DA83297BA4DD00B37A41 /* Views */,
@@ -203,12 +234,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E69EFB7297CE14A00E7BCB8 /* ApplicationClient.swift in Sources */,
 				7E69EF9A297CA36B00E7BCB8 /* Store.swift in Sources */,
 				7E69EF9E297CAC0B00E7BCB8 /* OnboardingWindow.swift in Sources */,
 				7E69EFA9297CDB2800E7BCB8 /* Reducer.swift in Sources */,
+				7E69EFB5297CE07600E7BCB8 /* Environment.swift in Sources */,
+				7E69EFB9297CE42200E7BCB8 /* Optional+Extensions.swift in Sources */,
 				7EA9DA82297BA06000B37A41 /* AppDelegate.swift in Sources */,
+				7E69EFB0297CDDC800E7BCB8 /* NotificationClient.swift in Sources */,
 				7E69EFA7297CDA0A00E7BCB8 /* State.swift in Sources */,
 				7E69EF97297CA0FA00E7BCB8 /* MenuBarView.swift in Sources */,
+				7E69EFBC297CE54600E7BCB8 /* UNAuthorizationStatus+Extensions.swift in Sources */,
 				7EA9DA73297B6E8F00B37A41 /* OnboardingView.swift in Sources */,
 				7E69EFAB297CDB7800E7BCB8 /* MonitoringStatus.swift in Sources */,
 				7E69EFA5297CD9F800E7BCB8 /* Actions.swift in Sources */,

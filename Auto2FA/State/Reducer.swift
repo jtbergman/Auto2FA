@@ -11,37 +11,38 @@ import RegexBuilder
 import UserNotifications
 import SQLite3
 
-typealias Reducer = (State, Action) -> State
+typealias Reducer = (State, Action, Environment) -> State
 
-func reducer(state: State, action: Action) -> State {
+func reducer(state: State, action: Action, environment: Environment) -> State {
   switch action {
+  case .cleanup:
+    environment.notifications.removeAllDeliveredNotifications()
+    return state
+
   case .initialize:
-    UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    environment.notifications.removeAllDeliveredNotifications()
     var state = state
     state.monitoringTask = monitorForPermissions()
     return state
 
   case .openFullDiskAccessSetting:
-    if let fullDiskAccessURL = URL(string: state.fullDiskAccessSettingURL) {
-      NSWorkspace.shared.open(fullDiskAccessURL)
-    }
+    environment.application.open(URL(string: state.fullDiskAccessSettingURL))
     return state
 
   case .pushNotificationsRequestAccess:
-    Task {
-      await askForLocalNotifications()
-    }
+    environment.notifications.requestAuthorization()
     return state
 
   case .reportIssue:
-    if let url = URL(string: state.reportIssueURL) {
-      NSWorkspace.shared.open(url)
-    }
+    environment.application.open(URL(string: state.reportIssueURL))
     return state
 
   case .selectMenuStatusItem:
-    let updatedStatus = state.monitoringStatus.toggled()
-    return reducer(state: state, action: .setMonitoringStatus(updatedStatus))
+    return reducer(
+      state: state,
+      action: .setMonitoringStatus(state.monitoringStatus.toggled()),
+      environment: environment
+    )
 
   case .setMonitoringStatus(let status):
     var state = state
@@ -60,7 +61,7 @@ func reducer(state: State, action: Action) -> State {
     return state
 
   case .quit:
-    NSApplication.shared.terminate(nil)
+    environment.application.terminate()
     return state
   }
 }
@@ -71,7 +72,7 @@ func reducer(state: State, action: Action) -> State {
 /// Shows an onboarding window in the center of the screen and brings it in front of all other apps
 func showOnboardingWindow() -> NSWindow {
   let window = OnboardingWindow()
-  if let frame = window.screen?.visibleFrame {
+  window.screen?.visibleFrame ?> { frame in
     let offsetX = window.frame.width / 2
     let offsetY = window.frame.height / 2
     let initialPosition = CGPoint(
@@ -79,8 +80,8 @@ func showOnboardingWindow() -> NSWindow {
       y: frame.midY - offsetY
     )
     window.setFrameOrigin(initialPosition)
-    window.makeKeyAndOrderFront(nil)
   }
+  window.makeKeyAndOrderFront(nil)
   NSApp.activate(ignoringOtherApps: true)
   return window
 }
@@ -99,12 +100,6 @@ func notificationAuthorizationStatus() async -> UNAuthorizationStatus {
   }
 }
 
-extension UNAuthorizationStatus {
-  var permissionIsGranted: Bool {
-    return self == .authorized || self == .provisional
-  }
-}
-
 func canAccessMessagesDB() -> Bool {
   let home = FileManager.default.homeDirectoryForCurrentUser
   let messages = home.appending(path: "Library/Messages/chat.db")
@@ -119,7 +114,7 @@ func extractSecurityCodes(_ messages: [Message]) -> [SecurityCode] {
   }
   var codes = [SecurityCode]()
   for message in messages {
-    if let match = message.text.firstMatch(of: regex) {
+    message.text.firstMatch(of: regex) ?> { match in
       let code = String(match.output.0)
       codes.append(SecurityCode(id: message.id, code: code))
     }
@@ -216,11 +211,10 @@ func monitorForMessages() -> Task<Void, Never> {
   Task {
     while !Task.isCancelled {
       let messages = observeMessagesDB().filter { !sent.contains($0.id) }
-      let codes = extractSecurityCodes(messages)
-      if let newestSecurityCode = codes.first {
-        sent.insert(newestSecurityCode.id)
-        copyToClipboard(newestSecurityCode.code)
-        sendNotificationForOTP(newestSecurityCode.code)
+      extractSecurityCodes(messages).first ?> { code in
+        sent.insert(code.id)
+        copyToClipboard(code.code)
+        sendNotificationForOTP(code.code)
       }
       try? await Task.sleep(nanoseconds: 5_000_000_000)
     }
