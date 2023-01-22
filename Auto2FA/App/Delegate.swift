@@ -5,8 +5,9 @@
 //  Created by JT Bergman on 1/20/23.
 //
 
-import Foundation
 import AppKit
+import Foundation
+import ServiceManagement
 
 let store = Store(
   state: State(),
@@ -17,6 +18,11 @@ let store = Store(
 final class Delegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ notification: Notification) {
     store.send(action: .initialize)
+    do {
+      try SMAppService.mainApp.register()
+    } catch {
+      print(error)
+    }
   }
 
   func applicationWillTerminate(_ notification: Notification) {
