@@ -201,7 +201,7 @@ The following blogs were helpful for completing this project
 
 - [Getting a Redux Vibe Into SwiftUI](https://www.kodeco.com/22096649-getting-a-redux-vibe-into-swiftui#toc-anchor-017)
 - [Building a lightweight SQLite wrapper in Swift](https://shareup.app/blog/building-a-lightweight-sqlite-wrapper-in-swift/)
-- [Beyond the Sanbox: Singing and distributing macOS apps outside the App Store](https://www.appcoda.com/distribute-macos-apps/)
+- [Beyond the Sandbox: Signing and distributing macOS apps outside the App Store](https://www.appcoda.com/distribute-macos-apps/)
 
 The following projects are similar to this project
 
